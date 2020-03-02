@@ -4,7 +4,7 @@ CUDNN_HALF=0
 OPENCV=1
 AVX=0
 OPENMP=0
-LIBSO=0
+LIBSO=1
 ZED_CAMERA=0
 
 # set GPU=1 and CUDNN=1 to speedup on GPU
@@ -138,6 +138,7 @@ OBJS = $(addprefix $(OBJDIR), $(OBJ))
 DEPS = $(wildcard src/*.h) Makefile include/darknet.h
 
 all: $(OBJDIR) backup results setchmod $(EXEC) $(LIBNAMESO) $(APPNAMESO)
+libs: $(OBJDIR) $(LIBNAMESO) $(APPNAMESO)
 
 ifeq ($(LIBSO), 1)
 CFLAGS+= -fPIC
